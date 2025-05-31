@@ -1,0 +1,26 @@
+.contact-container {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 2rem;
+  text-align: center;
+  color: #1c1c1c;
+}
+
+.contact-panel {
+  background-color: #ffffff;
+  color: #1c1c1c;
+}
+
+.contact-panel p {
+  margin: 1rem 0;
+  font-size: 1.1rem;
+}
+
+.contact-panel a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.contact-panel a:hover {
+  text-decoration: underline;
+}
