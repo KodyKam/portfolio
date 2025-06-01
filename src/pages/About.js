@@ -1,3 +1,4 @@
+/* About.js */
 import React from 'react';
 import './About.css'; // Optional, for styling
 
@@ -8,8 +9,8 @@ function About() {
 
       <div className="about-content">
         <img
-          src="/images/profile.jpg" // Put your image in public/images/profile.jpg
-          alt="Kody Kam"
+          src="/images/profile.jpg"
+          alt="Kamara Alleyne"
           className="profile-pic"
         />
 
@@ -18,16 +19,17 @@ function About() {
           <p>
             Hi, I'm Kamara — a passionate software engineering student with a love for building modern,
             responsive web applications. I'm currently focused on mastering Java, JavaScript, and full-stack development.
-            When I'm not coding, I enjoy family activities, learning new tech, and enjoying my aquariums.
+            When I'm not coding, I enjoy family activities, learning new tech, and taking care of my aquariums.
           </p>
 
           <a
-            href="/docs/KodyKam_Resume.pdf" // Put your PDF in public/docs/
+            href="/Kam_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="btn"
+            aria-label="View PDF resume"
           >
-            View My Resume
+            📄 View My Resume (PDF)
           </a>
         </div>
       </div>
