@@ -7,7 +7,7 @@ function Services() {
       <h1>Services I Offer</h1>
       <div className="services-list">
         <div className="service-item">
-          <img src="/images/service-1.png" alt="Web Development" />
+          <img src="/images/service1.png" alt="Web Development" />
           <h3>Web Development</h3>
           <p>Responsive websites using React, HTML, and CSS.</p>
         </div>
