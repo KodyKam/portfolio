@@ -8,7 +8,7 @@ function Footer() {
         <p>&copy; {new Date().getFullYear()} Kamara Alleyne. All rights reserved.</p>
         <div className="social-links">
           <a href="https://github.com/kodykam" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="www.linkedin.com/in/kamara-alleyne-56a4351" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/kamara-alleyne-56a4351" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href="mailto:kamara.alleyne@gmail.com">Email</a>
         </div>
       </div>
