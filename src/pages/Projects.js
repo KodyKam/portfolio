@@ -1,4 +1,4 @@
-/* Projects.js */
+/* client/src/pages/Projects.js */
 import './Projects.css';
 
 function Projects() {

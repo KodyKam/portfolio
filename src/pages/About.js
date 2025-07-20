@@ -1,10 +1,11 @@
-/* About.js */
+/* client/src/pages/About.js */
 import React from 'react';
 import './About.css'; // Optional, for styling
+import { Link } from 'react-router-dom';
 
 function About() {
   return (
-    <div className="page-container">
+    <div className="about-container">
       <h1>About Me</h1>
 
       <div className="about-content">
@@ -22,15 +23,9 @@ function About() {
             When I'm not coding, I enjoy family activities, learning new tech, and taking care of my aquariums.
           </p>
 
-          <a
-            href="/Kam_Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn"
-            aria-label="View PDF resume"
-          >
-            📄 View My Resume (PDF)
-          </a>
+          <Link to="/resume" className="btn" aria-label="Go to resume page">
+            🔒 View My Resume (Login Required)
+          </Link>
         </div>
       </div>
     </div>
