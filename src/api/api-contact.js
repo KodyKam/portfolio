@@ -1,24 +1,24 @@
 // client/src/api/api-contact.js
 
-const createContact = async (contactData) => {
+const BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
+
+const createContact = async (contact) => {
   try {
-    const response = await fetch('/api/contacts', {
+    const res = await fetch(`${BASE_URL}/api/contacts`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(contactData)
+      body: JSON.stringify(contact),
     });
 
-    const result = await response.json();
-
-    if (!response.ok) {
-      throw new Error(result.error || 'Failed to submit contact');
+    if (!res.ok) {
+      const error = await res.json();
+      throw new Error(error?.error || 'Failed to submit contact');
     }
 
-    return result;
+    return await res.json();
   } catch (err) {
-    console.error('❌ Submission failed:', err.message);
     throw err;
   }
 };
