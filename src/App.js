@@ -7,7 +7,7 @@ import Projects from './pages/Projects';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
 import Signin from './auth/Signin';
-import Signup from './user/Signup';
+import Signup from './auth/Signup';
 import Profile from './user/Profile';
 import EditProfile from './user/EditProfile';
 import Users from './user/Users';

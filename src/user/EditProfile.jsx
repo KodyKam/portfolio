@@ -1,14 +1,14 @@
 // client/src/user/EditProfile.jsx
 import React, { useState, useEffect } from "react";
 import { useParams, Navigate, useNavigate } from "react-router-dom";
-import auth from "../auth/auth-helper";
+import { isAuthenticated } from "../auth/auth-helper";
 import { read, update } from "./api-user";
 import { Card, CardContent, Typography, TextField, Button } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 
 export default function EditProfile() {
   const { userId } = useParams();
-  const jwt = auth.isAuthenticated();
+  const jwt = isAuthenticated();
   const navigate = useNavigate();
 
   const [values, setValues] = useState({

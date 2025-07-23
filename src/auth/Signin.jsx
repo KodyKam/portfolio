@@ -1,4 +1,4 @@
-//client/auth/Signin.jsx
+//client/src/auth/Signin.jsx
 import React, { useState } from "react";
 import {
   Card,
@@ -10,7 +10,7 @@ import {
   Icon,
 } from "@mui/material";
 import { Navigate, useLocation } from "react-router-dom";
-import auth from "./auth-helper.js";
+import { authenticate } from "./auth-helper.js";
 import { signin } from "./api-auth.js";
 
 export default function Signin() {
@@ -34,18 +34,18 @@ export default function Signin() {
     };
 
     signin(user).then((data) => {
-      if (data.error) {
-        setValues({ ...values, error: data.error });
-      } else {
-        auth.authenticate(data, () => {
-          setValues({
-            ...values,
-            error: "",
-            redirectToReferrer: true,
-          });
-        });
-      }
+  if (data.error) {
+    setValues({ ...values, error: data.error });
+  } else {
+    authenticate(data, () => {
+      setValues({
+        ...values,
+        error: "",
+        redirectToReferrer: true,
+      });
     });
+  }
+});
   };
 
   const { from } = location.state || { from: { pathname: "/" } };

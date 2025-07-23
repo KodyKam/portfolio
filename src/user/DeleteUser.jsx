@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-import auth from "../auth/auth-helper.js";
+import { isAuthenticated, signout } from "../auth/auth-helper.js";
 import { remove } from "./api-user.js";
 
 export default function DeleteUser({ userId }) {
@@ -22,7 +22,7 @@ export default function DeleteUser({ userId }) {
   const [redirect, setRedirect] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const jwt = auth.isAuthenticated();
+  const jwt = isAuthenticated();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -34,22 +34,22 @@ export default function DeleteUser({ userId }) {
   };
 
   const handleDelete = () => {
-    setLoading(true);
-    remove({ userId }, { t: jwt.token })
-      .then((data) => {
-        if (data?.error) {
-          setError(data.error);
-          setLoading(false);
-        } else {
-          auth.clearJWT(() => console.log("Account deleted"));
-          setRedirect(true);
-        }
-      })
-      .catch((err) => {
-        setError("Failed to delete account. Please try again.");
+  setLoading(true);
+  remove({ userId }, { t: jwt.token })
+    .then((data) => {
+      if (data?.error) {
+        setError(data.error);
         setLoading(false);
-      });
-  };
+      } else {
+        signout(() => console.log("Account deleted"));
+        setRedirect(true);
+      }
+    })
+    .catch((err) => {
+      setError("Failed to delete account. Please try again.");
+      setLoading(false);
+    });
+};
 
   if (redirect) {
     return <Navigate to="/" />;

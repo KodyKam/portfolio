@@ -1,12 +1,12 @@
 // client/src/components/Navbar.jsx
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import auth from '../auth/auth-helper';
+import { authenticate, isAuthenticated, signout } from '../auth/auth-helper';
 import './Navbar.css';
 
 function Navbar() {
   const location = useLocation();
-  const isAuthenticated = auth.isAuthenticated();
+  const userIsAuthenticated = isAuthenticated(); // avoid conflict with imported name
 
   const isActive = (path) =>
     location.pathname === path ? 'active-link' : '';
@@ -23,18 +23,32 @@ function Navbar() {
         <li><Link to="/services" className={isActive('/services')}>Services</Link></li>
         <li><Link to="/contact" className={isActive('/contact')}>Contact</Link></li>
 
-        {!isAuthenticated && (
+        {!userIsAuthenticated && (
           <>
             <li><Link to="/signin" className={isActive('/signin')}>Sign In</Link></li>
             <li><Link to="/signup" className={isActive('/signup')}>Sign Up</Link></li>
           </>
         )}
-        {isAuthenticated && (
+        {userIsAuthenticated && (
           <>
-            <li><Link to={`/user/${auth.isAuthenticated().user._id}`} className={isActive(`/user/${auth.isAuthenticated().user._id}`)}>My Profile</Link></li>
-            <li><span onClick={() => {
-              auth.clearJWT(() => window.location = '/');
-            }} className="signout-link">Sign Out</span></li>
+            <li>
+              <Link
+                to={`/user/${userIsAuthenticated.user._id}`}
+                className={isActive(`/user/${userIsAuthenticated.user._id}`)}
+              >
+                My Profile
+              </Link>
+            </li>
+            <li>
+              <span
+                onClick={() => {
+                  signout(() => (window.location = '/'));
+                }}
+                className="signout-link"
+              >
+                Sign Out
+              </span>
+            </li>
           </>
         )}
       </ul>

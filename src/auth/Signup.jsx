@@ -14,7 +14,7 @@ import {
   DialogActions,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import { create } from "./api-user";
+import { create } from "../user/api-user";
 
 export default function Signup() {
   const [values, setValues] = useState({

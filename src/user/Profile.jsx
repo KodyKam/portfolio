@@ -17,7 +17,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import { useLocation, Navigate, Link, useParams } from "react-router-dom";
 
 import DeleteUser from "./DeleteUser";
-import auth from "../auth/auth-helper.js";
+import { isAuthenticated } from "../auth/auth-helper.js";
 import { read } from "./api-user.js";
 
 export default function Profile() {
@@ -25,7 +25,7 @@ export default function Profile() {
   const { userId } = useParams();
 
   // ✅ All hooks at the top
-  const authUser = auth.isAuthenticated();
+  const authUser = isAuthenticated();
   const [user, setUser] = useState({});
   const [redirectToSignin, setRedirectToSignin] = useState(false);
 

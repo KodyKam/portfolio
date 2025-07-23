@@ -1,12 +1,12 @@
 //client/auth/PrivateRoute.jsx
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import auth from './auth-helper';
+import { isAuthenticated } from './auth-helper'; // ✅ updated import
 
 const PrivateRoute = ({ children }) => {
   const location = useLocation();
 
-  return auth.isAuthenticated() ? (
+  return isAuthenticated() ? (  // ✅ updated function call
     children
   ) : (
     <Navigate
