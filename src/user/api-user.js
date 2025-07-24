@@ -23,6 +23,7 @@ const handleError = (err) => {
 
 const create = async (user) => {
   try {
+    console.log("BASE_URL at signup:", BASE_URL); //this is a temporary checkpoint
     const response = await fetch(`${BASE_URL}/users/`, {
       method: "POST",
       headers: {
