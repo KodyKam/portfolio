@@ -1,7 +1,7 @@
 // client/src/components/Navbar.jsx
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { authenticate, isAuthenticated, signout } from '../auth/auth-helper';
+import { isAuthenticated, signout } from '../auth/auth-helper';
 import './Navbar.css';
 
 function Navbar() {
