@@ -1,4 +1,4 @@
-//client/user/Signup.jsx
+// client/user/Signup.jsx
 import React, { useState } from "react";
 import {
   Card,
@@ -14,7 +14,7 @@ import {
   DialogActions,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import { create } from "../user/api-user";
+import { create } from "../user/api-user"; // ✅ relative import from the same folder
 
 export default function Signup() {
   const [values, setValues] = useState({
@@ -36,8 +36,8 @@ export default function Signup() {
 
   const clickSubmit = () => {
     const user = {
-      name: values.name || undefined,
-      email: values.email || undefined,
+      name: values.name.trim() || undefined,
+      email: values.email.trim() || undefined,
       password: values.password || undefined,
     };
 
@@ -45,6 +45,7 @@ export default function Signup() {
       if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
+        setValues({ ...values, name: "", email: "", password: "", error: "" });
         setOpen(true);
       }
     });
@@ -62,14 +63,12 @@ export default function Signup() {
         }}
       >
         <CardContent>
-          <Typography variant="h6" sx={{ fontSize: 18 }}>
-            Sign Up
-          </Typography>
+          <Typography variant="h6">Sign Up</Typography>
 
           <TextField
             id="name"
             label="Name"
-            sx={{ width: "100%", mb: 2 }}
+            fullWidth
             value={values.name}
             onChange={handleChange("name")}
             margin="normal"
@@ -78,7 +77,7 @@ export default function Signup() {
           <TextField
             id="email"
             label="Email"
-            sx={{ width: "100%", mb: 2 }}
+            fullWidth
             value={values.email}
             onChange={handleChange("email")}
             margin="normal"
@@ -88,7 +87,7 @@ export default function Signup() {
             id="password"
             label="Password"
             type="password"
-            sx={{ width: "100%", mb: 2 }}
+            fullWidth
             value={values.password}
             onChange={handleChange("password")}
             margin="normal"

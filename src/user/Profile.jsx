@@ -1,4 +1,4 @@
-//client/user/Profile.jsx
+//client/src/user/Profile.jsx
 import React, { useState, useEffect } from "react";
 import {
   Paper,
