@@ -4,7 +4,7 @@
 // Build the base URL once, then append /auth
 // -------------------------------------------------------
 const baseUrl =
-  (import.meta.env.VITE_BACKEND_URL?.replace(/\/$/, "") || "http://localhost:5000/api");
+  (process.env.REACT_APP_API_URL || "http://localhost:5000/api").replace(/\/$/, "");
 
 const BASE_URL = `${baseUrl}/auth`;
 
