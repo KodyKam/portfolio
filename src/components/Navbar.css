@@ -115,3 +115,94 @@
 .signout-link:hover {
   color: #FFD700;
 }
+
+/* Hide/show navs based on screen size */
+.desktop-only {
+  display: flex;
+}
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+  .mobile-only {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+  }
+}
+
+/* Emoji carousel styles */
+.emoji-carousel {
+  background: linear-gradient(90deg, #0f172a, #1e3a8a);
+  padding: 1rem 0;
+  white-space: nowrap;
+  position: relative;
+  overflow-x: auto;     /* manual scrolling */
+  scrollbar-width: none; /* Firefox */
+}
+.emoji-carousel::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.emoji-track {
+  display: inline-flex; /* keep items in a row */
+  gap: 2rem;            /* spacing between emojis */
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Each emoji + label */
+.emoji-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 4rem; /* keeps consistent width */
+}
+
+/* Emoji itself */
+.emoji-link {
+  font-size: 4rem; /* big emoji */
+  text-decoration: none;
+  color: #f1f5f9;
+  transition: transform 0.2s ease, color 0.2s ease;
+  line-height: 1;
+}
+
+/* Tiny text under emoji */
+.emoji-label {
+  font-size: 0.9rem; /* small text */
+  margin-top: 0.2rem;
+  color: #cbd5e1;
+  text-align: center;
+  max-width: 3.6rem; /* matches emoji width */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.emoji-item a.active {
+  transform: scale(1.3);
+  color: #ffcc00; /* golden highlight */
+  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Hover effect */
+.emoji-link:hover {
+  transform: scale(1.3);
+  color: #FFD700;
+  cursor: pointer;
+}
+
+/* Active State Highlight for emoji carousel */
+.emoji-carousel .active-link .emoji-icon,
+.emoji-carousel .active-link .emoji-label {
+  transform: scale(1.3);
+  color: #ffcc00; /* golden highlight */
+  text-shadow: 0 0 8px rgba(255, 204, 0, 0.8);
+  font-weight: bold;
+  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+}

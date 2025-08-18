@@ -1,4 +1,4 @@
-//client/src/auth/Signin.jsx
+// client/src/auth/Signin.jsx
 import React, { useState } from "react";
 import {
   Card,
@@ -9,7 +9,7 @@ import {
   Typography,
   Icon,
 } from "@mui/material";
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate, useLocation, Link } from "react-router-dom"; // ✅ import Link
 import { authenticate } from "./auth-helper.js";
 import { signin } from "./api-auth.js";
 
@@ -34,18 +34,18 @@ export default function Signin() {
     };
 
     signin(user).then((data) => {
-  if (data.error) {
-    setValues({ ...values, error: data.error });
-  } else {
-    authenticate(data, () => {
-      setValues({
-        ...values,
-        error: "",
-        redirectToReferrer: true,
-      });
+      if (data.error) {
+        setValues({ ...values, error: data.error });
+      } else {
+        authenticate(data, () => {
+          setValues({
+            ...values,
+            error: "",
+            redirectToReferrer: true,
+          });
+        });
+      }
     });
-  }
-});
   };
 
   const { from } = location.state || { from: { pathname: "/" } };
@@ -102,15 +102,23 @@ export default function Signin() {
         )}
       </CardContent>
 
-      <CardActions>
+      <CardActions sx={{ flexDirection: "column", gap: 1 }}>
         <Button
           color="primary"
           variant="contained"
           onClick={clickSubmit}
-          sx={{ margin: "auto", mb: 2 }}
+          sx={{ width: "150px" }}
         >
           Submit
         </Button>
+
+        {/* 👇 Sign-up prompt here */}
+        <Typography variant="body2" sx={{ mt: 1 }}>
+          Don’t have an account?{" "}
+          <Link to="/signup" style={{ color: "#1976d2", fontWeight: "bold" }}>
+            Sign Up
+          </Link>
+        </Typography>
       </CardActions>
     </Card>
   );
