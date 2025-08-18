@@ -4,6 +4,18 @@ import { Link, useLocation } from 'react-router-dom';
 import { isAuthenticated, signout } from '../auth/auth-helper';
 import './Navbar.css';
 
+// 👇 Import Material UI icons
+import CottageIcon from '@mui/icons-material/Cottage';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import CodeIcon from '@mui/icons-material/Code';
+import DesignServicesIcon from '@mui/icons-material/DesignServices';
+import ContactMailIcon from '@mui/icons-material/ContactMail';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
+import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+import PersonIcon from '@mui/icons-material/Person'; // for Profile
+import LogoutIcon from '@mui/icons-material/Logout'; // for Sign Out
+import IntegrationInstructionsIcon from "@mui/icons-material/IntegrationInstructions";
+
 function Navbar() {
   const location = useLocation();
   const userIsAuthenticated = isAuthenticated();
@@ -11,12 +23,12 @@ function Navbar() {
   const isActive = (path) =>
     location.pathname === path ? 'active-link' : '';
 
-  // 👇 Auto-scroll Sign In emoji into view when on /signin
+  // 👇 Auto-scroll Sign In icon into view when on /signin
   useEffect(() => {
     if (location.pathname === "/signin") {
-      const signInEmoji = document.querySelector(".emoji-item .emoji-link[href='/signin']");
-      if (signInEmoji) {
-        signInEmoji.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      const signInIcon = document.querySelector(".emoji-item .emoji-link[href='/signin']");
+      if (signInIcon) {
+        signInIcon.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
       }
     }
   }, [location.pathname]);
@@ -65,38 +77,40 @@ function Navbar() {
         )}
       </ul>
 
-      {/* 👇 Emoji carousel nav (visible on mobile) */}
+      {/* 👇 Icon carousel nav (visible on mobile) */}
       <div className="emoji-carousel mobile-only">
         <div className="emoji-track">
           <div className={`emoji-item ${isActive('/')}`}>
-            <Link to="/" className="emoji-link">🏠</Link>
+            <Link to="/" className="emoji-link"><CottageIcon fontSize="large" /></Link>
             <span className="emoji-label">Home</span>
           </div>
           <div className={`emoji-item ${isActive('/about')}`}>
-            <Link to="/about" className="emoji-link">👤</Link>
+            <Link to="/about" className="emoji-link"><AccountCircleIcon fontSize="large" /></Link>
             <span className="emoji-label">About</span>
           </div>
           <div className={`emoji-item ${isActive('/projects')}`}>
-            <Link to="/projects" className="emoji-link">💻</Link>
+            <Link to="/projects" className="emoji-link"><CodeIcon fontSize="large" /></Link>
             <span className="emoji-label">Projects</span>
           </div>
           <div className={`emoji-item ${isActive('/services')}`}>
-            <Link to="/services" className="emoji-link">🛠️</Link>
-            <span className="emoji-label">Services</span>
-          </div>
+        <Link to="/services" className="emoji-link">
+          <IntegrationInstructionsIcon fontSize="large" />
+        </Link>
+        <span className="emoji-label">Services</span>
+      </div>
           <div className={`emoji-item ${isActive('/contact')}`}>
-            <Link to="/contact" className="emoji-link">📞</Link>
+            <Link to="/contact" className="emoji-link"><ContactMailIcon fontSize="large" /></Link>
             <span className="emoji-label">Contact</span>
           </div>
 
           {!userIsAuthenticated && (
             <>
               <div className={`emoji-item ${isActive('/signin')}`}>
-                <Link to="/signin" className="emoji-link">🔑</Link>
+                <Link to="/signin" className="emoji-link"><LockOpenIcon fontSize="large" /></Link>
                 <span className="emoji-label">Sign In</span>
               </div>
               <div className={`emoji-item ${isActive('/signup')}`}>
-                <Link to="/signup" className="emoji-link">📝</Link>
+                <Link to="/signup" className="emoji-link"><AppRegistrationIcon fontSize="large" /></Link>
                 <span className="emoji-label">Sign Up</span>
               </div>
             </>
@@ -106,7 +120,7 @@ function Navbar() {
             <>
               <div className={`emoji-item ${isActive(`/user/${userIsAuthenticated.user._id}`)}`}>
                 <Link to={`/user/${userIsAuthenticated.user._id}`} className="emoji-link">
-                  🙍‍♂️
+                  <PersonIcon fontSize="large" />
                 </Link>
                 <span className="emoji-label">Profile</span>
               </div>
@@ -117,7 +131,7 @@ function Navbar() {
                   }}
                   className="emoji-link signout-link"
                 >
-                  🚪
+                  <LogoutIcon fontSize="large" />
                 </span>
                 <span className="emoji-label">Sign Out</span>
               </div>
