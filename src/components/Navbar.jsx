@@ -8,7 +8,6 @@ import './Navbar.css';
 import CottageIcon from '@mui/icons-material/Cottage';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CodeIcon from '@mui/icons-material/Code';
-import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
