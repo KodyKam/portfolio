@@ -153,17 +153,31 @@ function Contact() {
           })}
         />
 
-        <Button
-          type="submit"
-          variant="contained"
-          sx={{
-            mt: 2,
-            backgroundColor: '#3498db',
-            '&:hover': { backgroundColor: '#2c80b4' }
-          }}
-        >
-          Add To Contacts
-        </Button>
+<Button
+  type="submit"
+  variant="contained"
+  sx={{
+    mt: 2,
+    backgroundColor: '#3498db',
+    '&:hover': { backgroundColor: '#2c80b4' }
+  }}
+>
+  Send
+</Button>
+
+<Button
+  type="button"
+  variant="contained"
+  sx={{
+    mt: 2,
+    ml: 2, // spacing from Send button
+backgroundColor: '#1abc9c',
+'&:hover': { backgroundColor: '#16a085' }
+  }}
+  onClick={() => reset()} // <-- clears the form fields
+>
+  Clear
+</Button>
       </form>
 
       <Snackbar
