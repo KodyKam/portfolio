@@ -23,9 +23,15 @@ function About() {
             When I'm not coding, I enjoy family activities, learning new tech, and taking care of my aquariums.
           </p>
 
-          <Link to="/resume" className="btn" aria-label="Go to resume page">
-            🔒 View My Resume (Login Required)
-          </Link>
+          <a
+  href="/Kam_Resume.pdf"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="btn"
+  aria-label="View my resume"
+>
+  📄 View My Resume
+</a>
         </div>
       </div>
     </div>
