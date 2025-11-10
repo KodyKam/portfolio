@@ -24,17 +24,16 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route
-          path="/projects"
-          element={<PrivateRoute><Projects /></PrivateRoute>}
-        />
-        <Route
-          path="/services"
-          element={<PrivateRoute><Services /></PrivateRoute>}
-        />
+
+        {/* Public Access Now */}
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/services" element={<Services />} />
+
         <Route path="/contact" element={<Contact />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
+
+        {/* Still Protected */}
         <Route path="/users" element={<Users />} />
         <Route
           path="/user/edit/:userId"
