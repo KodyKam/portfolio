@@ -47,10 +47,7 @@ function App() {
           path="/user/delete/:userId"
           element={<PrivateRoute><DeleteUser /></PrivateRoute>}
         />
-        <Route
-          path="/resume"
-          element={<PrivateRoute><Resume /></PrivateRoute>}
-        />
+        <Route path="/resume" element={<Resume />} />
       </Routes>
       <Footer />
     </BrowserRouter>
