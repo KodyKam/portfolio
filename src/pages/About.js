@@ -1,7 +1,6 @@
 /* client/src/pages/About.js */
 import React from 'react';
 import './About.css'; // Optional, for styling
-import { Link } from 'react-router-dom';
 
 function About() {
   return (
