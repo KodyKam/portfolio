@@ -24,10 +24,18 @@ const allowedOrigins = [
 // CORS middleware — must come BEFORE your routes!
 
 app.use(cors({
-  origin: allowedOrigins,
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
-app.options('*', cors());
+// Parse JSON
+app.use(express.json());
+// app.options('*', cors());
 
 // Other middleware
 app.use(express.json());
