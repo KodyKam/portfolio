@@ -13,7 +13,7 @@ import config from './server/config/config.js';
 // app.use(bodyParser.json());
 
 // Mount API routes
-app.use('/api', authRoutes);
+// app.use('/api', authRoutes);
 
 // Mount contact routes (delegates to controller)
 // If you're already mounting this inside server/express.js, remove one of them to avoid double-mounting.
