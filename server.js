@@ -5,9 +5,9 @@ dotenv.config();
 import mongoose from 'mongoose';
 import app from './server/express.js';
 import config from './server/config/config.js';
-import authRoutes from './server/routes/auth.routes.js';
-import contactRoutes from './server/routes/contact.routes.js'; // ← NEW
-import bodyParser from 'body-parser';
+// import authRoutes from './server/routes/auth.routes.js';
+// import contactRoutes from './server/routes/contact.routes.js'; // ← NEW
+// import bodyParser from 'body-parser';
 
 // JSON parsing (harmless if already in express.js)
 app.use(bodyParser.json());
@@ -17,7 +17,7 @@ app.use('/api', authRoutes);
 
 // Mount contact routes (delegates to controller)
 // If you're already mounting this inside server/express.js, remove one of them to avoid double-mounting.
-app.use('/api/contact', contactRoutes);
+// app.use('/api/contact', contactRoutes);
 
 // Optional home route
 app.get('/', (req, res) => {
