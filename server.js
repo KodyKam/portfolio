@@ -10,7 +10,7 @@ import config from './server/config/config.js';
 // import bodyParser from 'body-parser';
 
 // JSON parsing (harmless if already in express.js)
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
 // Mount API routes
 app.use('/api', authRoutes);
