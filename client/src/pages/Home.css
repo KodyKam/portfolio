@@ -1,0 +1,38 @@
+/* Home.css */
+.home-container {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: #ffffff; /* keep this white for cards */
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  color: #1c1c1c; /* make sure text is dark */
+}
+
+.intro-text {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.mission {
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #444;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #217dbb;
+}

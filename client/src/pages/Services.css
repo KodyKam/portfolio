@@ -1,0 +1,38 @@
+/* Services.css */
+.service-item {
+  background: #ffffff;
+  color: #1c1c1c;
+  transition: transform 0.3s ease;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.service-item:hover {
+  transform: translateY(-5px);
+}
+
+.services-list {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr); /* Just like Projects */
+  margin-top: 2rem;
+}
+
+.service-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.service-item h3 {
+  margin-top: 1rem;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .services-list {
+    grid-template-columns: 1fr; /* Stack on small screens */
+  }
+}
