@@ -1,12 +1,11 @@
 // client/src/auth/api-auth.js
-
+import API_BASE from "../config/api";
 // -------------------------------------------------------
 // Build the base URL once, then append /auth
 // -------------------------------------------------------
-const baseUrl =
-  (process.env.REACT_APP_API_URL || "http://localhost:5000/api").replace(/\/$/, "");
 
-const BASE_URL = `${baseUrl}/auth`;
+
+const BASE_URL = `${API_BASE}/auth`;
 
 // -------------------------------------------------------
 //  Shared helpers

@@ -45,3 +45,20 @@ export const listByClient = async (req, res) => {
 export const read = (req, res) => {
   res.json(req.workspace);
 };
+
+export const addProject = async (req, res) => {
+  try {
+    const { workspaceId } = req.params;
+    const { title, description, previewUrl, githubUrl } = req.body;
+
+    const workspace = await Workspace.findById(workspaceId);
+    if (!workspace) return res.status(404).json({ error: 'Workspace not found' });
+
+    workspace.projects.push({ title, description, previewUrl, githubUrl });
+    await workspace.save();
+
+    res.json(workspace);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+}

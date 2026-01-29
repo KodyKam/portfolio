@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { isAuthenticated } from "../auth/auth-helper";
 import "./ClientDashboard.css";
 import { Link } from "react-router-dom";
+import { listByClient } from "../api/workspace";
 
 const ClientDashboard = () => {
   const [workspaces, setWorkspaces] = useState([]);
@@ -11,22 +12,15 @@ const ClientDashboard = () => {
   const user = auth?.user;
   const token = auth?.token;
 
-  useEffect(() => {
-    if (!user || !token) return;
 
-    fetch(`/api/workspaces/by-client/${user._id}`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (!data?.error) {
-          setWorkspaces(data);
-        }
-      });
-  }, [user, token]);
+useEffect(() => {
+  if (!user || !token) return;
+
+  listByClient({ userId: user._id }, token)
+    .then((data) => {
+      if (!data?.error) setWorkspaces(data);
+    });
+}, [user, token]);
 
   return (
     <div className="page-container client-dashboard">

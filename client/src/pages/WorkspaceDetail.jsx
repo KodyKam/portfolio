@@ -9,7 +9,10 @@ const WorkspaceDetail = () => {
   const [workspace, setWorkspace] = useState(null);
 
   useEffect(() => {
-    fetch(`/api/workspaces/${workspaceId}`, {
+    const BASE_URL =
+  process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+
+fetch(`${BASE_URL}/workspaces/${workspaceId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

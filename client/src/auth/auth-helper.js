@@ -1,4 +1,5 @@
 // client/src/auth/auth-helper.js
+
 export const authenticate = (jwt, next) => {
   if (typeof window !== 'undefined') {
     localStorage.setItem('jwt', JSON.stringify(jwt));
@@ -17,9 +18,5 @@ export const signout = (next) => {
     localStorage.removeItem('jwt');
   }
 
-  next();
-
-  return fetch('/api/auth/signout', { method: 'GET' })
-    .then((res) => res.json())
-    .catch((err) => console.log(err));
+  if (typeof next === 'function') next();
 };
