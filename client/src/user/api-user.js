@@ -1,16 +1,17 @@
-// client/src/user/api-user.js
+import API_BASE from "../config/api";
 
-const BASE_URL =
-  process.env.REACT_APP_API_URL || process.env.VITE_BACKEND_URL || "http://localhost:5000/api";
-  // const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = `${API_BASE}/users`;
 
-const handleResponse = async (response) => {
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(`API Error: ${response.status} ${response.statusText} — ${errorText}`);
+// ------------------------
+//  Helpers
+// ------------------------
+const handleResponse = async (res) => {
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`API Error: ${res.status} ${res.statusText} — ${text}`);
   }
   try {
-    return await response.json();
+    return await res.json();
   } catch (err) {
     console.error("Failed to parse JSON:", err);
     throw err;
@@ -18,52 +19,43 @@ const handleResponse = async (response) => {
 };
 
 const handleError = (err) => {
-  if (err.name === "AbortError") return;
   console.error("API call failed:", err);
-  return { error: "Network or server error" };
+  return { error: err.message || "Network or server error" };
 };
 
+// ------------------------
+//  User (CRUD) endpoints
+// ------------------------
 const create = async (user) => {
   try {
-    const response = await fetch(`${BASE_URL}/users/`, {
+    const res = await fetch(`${BASE_URL}/`, {
       method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify(user),
     });
-    return await response.json();
-  } catch (err) {
-    console.error("Signup failed:", err);
-    return { error: "Signup failed. Please try again." };
-  }
-};
-
-const list = async (signal) => {
-  try {
-    const response = await fetch(BASE_URL, {
-      method: "GET",
-      signal,
-    });
-    return await handleResponse(response);
+    return await handleResponse(res);
   } catch (err) {
     return handleError(err);
   }
 };
 
-// client/src/user/api-user.js
+const list = async (signal) => {
+  try {
+    const res = await fetch(BASE_URL, { method: "GET", signal });
+    return await handleResponse(res);
+  } catch (err) {
+    return handleError(err);
+  }
+};
+
 const read = async ({ userId }, token, signal) => {
   try {
-    const response = await fetch(`${BASE_URL}/users/${userId}`, {
+    const res = await fetch(`${BASE_URL}/${userId}`, {
       method: "GET",
       signal,
-      headers: {
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`, // ✅ now matches param name
-      },
+      headers: { Accept: "application/json", Authorization: `Bearer ${token}` },
     });
-    return await handleResponse(response);
+    return await handleResponse(res);
   } catch (err) {
     return handleError(err);
   }
@@ -71,16 +63,12 @@ const read = async ({ userId }, token, signal) => {
 
 const update = async ({ userId }, { t }, user) => {
   try {
-    const response = await fetch(`${BASE_URL}/users/${userId}`, {
+    const res = await fetch(`${BASE_URL}/${userId}`, {
       method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${t}`,
-      },
+      headers: { "Content-Type": "application/json", Accept: "application/json", Authorization: `Bearer ${t}` },
       body: JSON.stringify(user),
     });
-    return await handleResponse(response);
+    return await handleResponse(res);
   } catch (err) {
     return handleError(err);
   }
@@ -88,15 +76,11 @@ const update = async ({ userId }, { t }, user) => {
 
 const remove = async ({ userId }, { t }) => {
   try {
-    const response = await fetch(`${BASE_URL}/users/${userId}`, {
+    const res = await fetch(`${BASE_URL}/${userId}`, {
       method: "DELETE",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${t}`,
-      },
+      headers: { "Content-Type": "application/json", Accept: "application/json", Authorization: `Bearer ${t}` },
     });
-    return await handleResponse(response);
+    return await handleResponse(res);
   } catch (err) {
     return handleError(err);
   }

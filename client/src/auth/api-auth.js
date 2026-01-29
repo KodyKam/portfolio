@@ -1,32 +1,22 @@
-// client/src/auth/api-auth.js
 import API_BASE from "../config/api";
-// -------------------------------------------------------
-// Build the base URL once, then append /auth
-// -------------------------------------------------------
 
-
+// Base URL for auth endpoints
 const BASE_URL = `${API_BASE}/auth`;
 
-// -------------------------------------------------------
+// ------------------------
 //  Shared helpers
-// -------------------------------------------------------
-const handleResponse = async (response) => {
-  if (!response.ok) {
-    // Response isn’t 2xx → grab the body *as text* so we can surface it
-    const errorText = await response.text();
-    throw new Error(
-      `Auth API Error: ${response.status} ${response.statusText} — ${errorText}`
-    );
+// ------------------------
+const handleResponse = async (res) => {
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Auth API Error: ${res.status} ${res.statusText} — ${text}`);
   }
-
-  // Only attempt JSON parsing if server says it’s JSON
-  const contentType = response.headers.get("content-type") || "";
+  const contentType = res.headers.get("content-type") || "";
   if (!contentType.includes("application/json")) {
-    const text = await response.text();
-    throw new Error(`Expected JSON but received: ${text.substring(0, 100)}…`);
+    const text = await res.text();
+    throw new Error(`Expected JSON but got: ${text.substring(0, 100)}`);
   }
-
-  return response.json();
+  return res.json();
 };
 
 const handleError = (err) => {
@@ -34,22 +24,18 @@ const handleError = (err) => {
   return { error: err.message || "Network error, please try again." };
 };
 
-// -------------------------------------------------------
+// ------------------------
 //  Auth endpoints
-// -------------------------------------------------------
+// ------------------------
 const signin = async (user) => {
   try {
-    const response = await fetch(`${BASE_URL}/signin`, {
+    const res = await fetch(`${BASE_URL}/signin`, {
       method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      credentials: "include",          // send cookies / refresh tokens
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      credentials: "include",
       body: JSON.stringify(user),
     });
-
-    return await handleResponse(response);
+    return await handleResponse(res);
   } catch (err) {
     return handleError(err);
   }
@@ -57,16 +43,12 @@ const signin = async (user) => {
 
 const signup = async (user) => {
   try {
-    const response = await fetch(`${BASE_URL}/signup`, {
+    const res = await fetch(`${BASE_URL}/signup`, {
       method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify(user),
     });
-
-    return await handleResponse(response);
+    return await handleResponse(res);
   } catch (err) {
     return handleError(err);
   }
@@ -74,31 +56,30 @@ const signup = async (user) => {
 
 const signout = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/signout`, {
+    const res = await fetch(`${BASE_URL}/signout`, {
       method: "GET",
       credentials: "include",
     });
-
-    return await handleResponse(response);
+    return await handleResponse(res);
   } catch (err) {
     return handleError(err);
   }
 };
 
-// -------------------------------------------------------
+// ------------------------
 //  Local-storage helpers
-// -------------------------------------------------------
+// ------------------------
 const authenticate = (jwt, next = () => {}) => {
   if (typeof window !== "undefined") {
     localStorage.setItem("jwt", JSON.stringify(jwt));
-    if (typeof next === "function") next();
+    next();
   }
 };
 
 const clearJWT = (cb = () => {}) => {
   if (typeof window !== "undefined") {
     localStorage.removeItem("jwt");
-    if (typeof cb === "function") cb();
+    cb();
   }
 };
 
@@ -108,4 +89,4 @@ const isAuthenticated = () => {
   return jwt ? JSON.parse(jwt) : false;
 };
 
-export { signin, signup, signout, authenticate, isAuthenticated, clearJWT };
+export { signin, signup, signout, authenticate, clearJWT, isAuthenticated };
