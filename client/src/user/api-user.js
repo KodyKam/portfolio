@@ -1,8 +1,8 @@
 // client/src/user/api-user.js
 
-// const BASE_URL =
-  // process.env.REACT_APP_API_URL || process.env.VITE_BACKEND_URL || "http://localhost:5000/api";
-  const BASE_URL = "http://localhost:5000/api";
+const BASE_URL =
+  process.env.REACT_APP_API_URL || process.env.VITE_BACKEND_URL || "http://localhost:5000/api";
+  // const BASE_URL = "http://localhost:5000/api";
 
 const handleResponse = async (response) => {
   if (!response.ok) {
