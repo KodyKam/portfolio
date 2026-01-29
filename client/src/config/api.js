@@ -1,11 +1,10 @@
 // client/src/config/api.js
+const API_BASE = process.env.REACT_APP_API_URL;
 
-// Use the environment variable if defined, otherwise fallback
-const API_BASE =
-  process.env.REACT_APP_API_URL ||          // React env prefix
-  process.env.VITE_BACKEND_URL ||           // Vite env prefix
-  "https://portfolio-backend-1-87ql.onrender.com/api"; // fallback for production
+if (!API_BASE) {
+  console.error(
+    "API_BASE is not set! Make sure REACT_APP_API_URL is defined at build time."
+  );
+}
 
-  console.log("API_BASE is:", API_BASE);
-  
 export default API_BASE;
