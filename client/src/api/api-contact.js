@@ -1,7 +1,7 @@
 // client/src/api/api-contact.js
 
 const BASE_URL =
-  process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+  process.env.REACT_APP_API_URL;
 
 const createContact = async (contact) => {
   const res = await fetch(`${BASE_URL}/contacts`, {
