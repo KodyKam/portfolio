@@ -65,8 +65,6 @@ export default function Profile() {
   };
 }, [userId, authUser]);
 
-  console.log("authUser:", authUser);
-  console.log("fetched user:", user);
 
   if (redirectToSignin) {
     return <Navigate to="/signin" state={{ from: location.pathname }} replace />;
