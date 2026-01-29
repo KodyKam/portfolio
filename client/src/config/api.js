@@ -6,4 +6,6 @@ const API_BASE =
   process.env.VITE_BACKEND_URL ||           // Vite env prefix
   "https://portfolio-backend-1-87ql.onrender.com/api"; // fallback for production
 
+  console.log("API_BASE is:", API_BASE);
+  
 export default API_BASE;
