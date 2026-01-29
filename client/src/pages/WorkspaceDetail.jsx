@@ -2,27 +2,42 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { isAuthenticated } from "../auth/auth-helper";
+import API_BASE from "../config/api"; // ✅ use single API base
 
 const WorkspaceDetail = () => {
   const { workspaceId } = useParams();
-  const { token } = isAuthenticated();
+  const auth = isAuthenticated();
+  const token = auth ? auth.token : null;
   const [workspace, setWorkspace] = useState(null);
 
   useEffect(() => {
-    const BASE_URL =
-  process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+    if (!workspaceId || !token) return;
 
-fetch(`${BASE_URL}/workspaces/${workspaceId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (!data.error) {
+    const fetchWorkspace = async () => {
+      try {
+        const response = await fetch(`${API_BASE}/workspaces/${workspaceId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: "application/json"
+          }
+        });
+
+        if (!response.ok) {
+          const text = await response.text();
+          console.error("Workspace fetch error:", text);
+          return;
+        }
+
+        const data = await response.json();
+        if (data) {
           setWorkspace(data);
         }
-      });
+      } catch (err) {
+        console.error("Workspace fetch failed:", err);
+      }
+    };
+
+    fetchWorkspace();
   }, [workspaceId, token]);
 
   if (!workspace) {

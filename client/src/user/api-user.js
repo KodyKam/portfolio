@@ -1,3 +1,4 @@
+// src/user/api-user.js
 import API_BASE from "../config/api";
 
 const BASE_URL = `${API_BASE}/users`;
@@ -10,12 +11,7 @@ const handleResponse = async (res) => {
     const text = await res.text();
     throw new Error(`API Error: ${res.status} ${res.statusText} — ${text}`);
   }
-  try {
-    return await res.json();
-  } catch (err) {
-    console.error("Failed to parse JSON:", err);
-    throw err;
-  }
+  return res.json();
 };
 
 const handleError = (err) => {
@@ -24,7 +20,7 @@ const handleError = (err) => {
 };
 
 // ------------------------
-//  User (CRUD) endpoints
+//  User CRUD
 // ------------------------
 const create = async (user) => {
   try {

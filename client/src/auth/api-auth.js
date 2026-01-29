@@ -1,6 +1,6 @@
+// src/auth/api-auth.js
 import API_BASE from "../config/api";
 
-// Base URL for auth endpoints
 const BASE_URL = `${API_BASE}/auth`;
 
 // ------------------------
@@ -67,7 +67,7 @@ const signout = async () => {
 };
 
 // ------------------------
-//  Local-storage helpers
+//  Local storage helpers
 // ------------------------
 const authenticate = (jwt, next = () => {}) => {
   if (typeof window !== "undefined") {
