@@ -50,6 +50,19 @@ export const getUserById = async (req, res) => {
   }
 };
 
+export const userByID = async (req, res, next, id) => {
+  try {
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    req.profile = user;
+    next();
+  } catch (err) {
+    return res.status(400).json({ error: "Invalid user ID" });
+  }
+};
+
 // Update
 export const updateUser = async (req, res) => {
   try {
@@ -78,4 +91,22 @@ export const deleteAllUsers = async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
+};
+
+// Read user profile (USED BY Profile.jsx)
+export const read = (req, res) => {
+  if (req.profile) {
+    req.profile.password = undefined; // never send password
+    res.json(req.profile);
+  } else {
+    res.status(404).json({ error: "User not found" });
+  }
+};
+
+export const hasAuthorization = (req, res, next) => {
+  const authorized = req.profile && req.auth && req.profile._id.toString() === req.auth._id;
+  if (!authorized) {
+    return res.status(403).json({ error: "User is not authorized" });
+  }
+  next();
 };

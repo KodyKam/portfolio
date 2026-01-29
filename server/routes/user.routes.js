@@ -1,49 +1,45 @@
 // server/routes/user.routes.js
-import express from 'express';
-import { requireSignin } from '../controllers/auth.controller.js';
-import {
-  createUser,
-  getAllUsers,
-  getUserById,
-  updateUser,
-  deleteUser,
-  deleteAllUsers
-} from '../controllers/user.controller.js';
+import express from "express";
+import { requireSignin } from "../controllers/auth.controller.js";
+import * as userCtrl from "../controllers/user.controller.js";
 
 const router = express.Router();
 
 /* ---------- Public Routes ---------- */
 
-// Create a new user
-router.post('/', createUser);
+// Create user
+router.post("/", userCtrl.createUser);
 
 // Get all users
-router.get('/', getAllUsers);
+router.get("/", userCtrl.getAllUsers);
 
-/* ---------- Protected Routes (Must pass requireSignin middleware) ---------- */
+/* ---------- User Profile (USED BY FRONTEND) ---------- */
 
-// Sample protected route
-router.get('/protected', requireSignin, (req, res) => {
-  res.json({ message: 'This is a protected route.' });
-});
+// Read user profile
+router.get(
+  "/:userId",
+  requireSignin,
+  userCtrl.hasAuthorization,
+  userCtrl.read
+);
 
-// Another test protected route
-router.get('/secret', requireSignin, (req, res) => {
-  res.json({ message: "This is a protected route. You are authenticated." });
-});
+// Update user
+router.put(
+  "/:userId",
+  requireSignin,
+  userCtrl.hasAuthorization,
+  userCtrl.updateUser
+);
 
-/* ---------- User CRUD (Some Protected) ---------- */
+// Delete user
+router.delete(
+  "/:userId",
+  requireSignin,
+  userCtrl.hasAuthorization,
+  userCtrl.deleteUser
+);
 
-// Get user by ID (Protected)
-router.get('/:id', requireSignin, getUserById);
-
-// Update user by ID
-router.put('/:id', updateUser);
-
-// Delete user by ID
-router.delete('/:id', deleteUser);
-
-// Delete all users
-router.delete('/', deleteAllUsers);
+// Param middleware
+router.param("userId", userCtrl.userByID);
 
 export default router;

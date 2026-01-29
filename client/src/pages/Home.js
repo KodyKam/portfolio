@@ -5,7 +5,7 @@ import './Home.css';
 function Home() {
   return (
     <div className="home-container">
-      <h1>Welcome to My Portfolio</h1>
+      <h1>Welcome!</h1>
       <p className="intro-text">
         Hi! I'm <strong>Kamara Alleyne</strong>, a Software Engineering Technician passionate about building modern, user-friendly web apps.
       </p>

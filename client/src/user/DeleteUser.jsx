@@ -1,7 +1,5 @@
-// client/src/user/DeleteUser.jsx
 import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { Navigate } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import {
   IconButton,
   Button,
@@ -13,11 +11,11 @@ import {
   Typography,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-
 import { isAuthenticated, signout } from "../auth/auth-helper.js";
 import { remove } from "./api-user.js";
 
-export default function DeleteUser({ userId }) {
+export default function DeleteUser() {
+  const { userId } = useParams(); // ✅ get userId from URL
   const [open, setOpen] = useState(false);
   const [redirect, setRedirect] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -34,26 +32,24 @@ export default function DeleteUser({ userId }) {
   };
 
   const handleDelete = () => {
-  setLoading(true);
-  remove({ userId }, { t: jwt.token })
-    .then((data) => {
-      if (data?.error) {
-        setError(data.error);
+    setLoading(true);
+    remove({ userId }, { t: jwt.token })
+      .then((data) => {
+        if (data?.error) {
+          setError(data.error);
+          setLoading(false);
+        } else {
+          signout(() => console.log("Account deleted"));
+          setRedirect(true);
+        }
+      })
+      .catch(() => {
+        setError("Failed to delete account. Please try again.");
         setLoading(false);
-      } else {
-        signout(() => console.log("Account deleted"));
-        setRedirect(true);
-      }
-    })
-    .catch((err) => {
-      setError("Failed to delete account. Please try again.");
-      setLoading(false);
-    });
-};
+      });
+  };
 
-  if (redirect) {
-    return <Navigate to="/" />;
-  }
+  if (redirect) return <Navigate to="/" />;
 
   return (
     <>
@@ -64,7 +60,6 @@ export default function DeleteUser({ userId }) {
       >
         <DeleteIcon />
       </IconButton>
-
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Delete Account</DialogTitle>
         <DialogContent>
@@ -96,7 +91,3 @@ export default function DeleteUser({ userId }) {
     </>
   );
 }
-
-DeleteUser.propTypes = {
-  userId: PropTypes.string.isRequired,
-};

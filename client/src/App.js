@@ -1,6 +1,6 @@
 // client/src/App.js
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
@@ -17,6 +17,8 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Resume from './pages/Resume';
 import AdminContacts from './pages/AdminContacts';
+import ClientDashboard from "./pages/ClientDashboard";
+import WorkspaceDetail from "./pages/WorkspaceDetail";
 
 function App() {
   return (
@@ -35,7 +37,7 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
 
-        {/* Still Protected */}
+        {/* Protected Routes */}
         <Route path="/users" element={<Users />} />
         <Route
           path="/user/edit/:userId"
@@ -50,6 +52,22 @@ function App() {
           element={<PrivateRoute><DeleteUser /></PrivateRoute>}
         />
         <Route path="/resume" element={<Resume />} />
+        <Route
+  path="/workspace/:workspaceId"
+  element={
+    <PrivateRoute>
+      <WorkspaceDetail />
+    </PrivateRoute>
+  }
+/>
+        <Route
+  path="/dashboard"
+  element={
+    <PrivateRoute>
+      <ClientDashboard />
+    </PrivateRoute>
+  }
+/>
       </Routes>
       <Footer />
     </BrowserRouter>

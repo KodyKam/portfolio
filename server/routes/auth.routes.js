@@ -1,11 +1,11 @@
 // server/routes/auth.routes.js
-import express from 'express';
-import { signup, signin, signout, requireSignin } from '../controllers/auth.controller.js';
+import express from "express";
+import { signin, signup, signout } from "../controllers/auth.controller.js";
 
 const router = express.Router();
 
-router.post('/auth/signup', signup);
-router.post('/auth/signin', signin);
-router.get('/auth/signout', signout);
+router.post("/signin", signin);
+router.post("/signup", signup);
+router.get("/signout", signout);
 
 export default router;

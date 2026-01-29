@@ -5,7 +5,7 @@ function Projects() {
   return (
     <div className="page-container">
       <h1>My Projects</h1>
-      <p>Here are a few projects I'm proud of:</p>
+      <p>Here are a few projects I'm pleased to share:</p>
       <div className="project-grid">
         <div className="project-card">
           <a href="https://kodykam.github.io/fishing/" target="_blank" rel="noopener noreferrer">

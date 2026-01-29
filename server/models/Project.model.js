@@ -19,6 +19,11 @@ const projectSchema = new mongoose.Schema({
     required: true,
     lowercase: true
   },
+  client: {
+  type: mongoose.Schema.Types.ObjectId,
+  ref: "User",
+  required: true
+},
   completion: {
     type: Date,
     required: true

@@ -53,27 +53,27 @@ function Navbar() {
           </>
         )}
         {userIsAuthenticated && (
-          <>
-            <li>
-              <Link
-                to={`/user/${userIsAuthenticated.user._id}`}
-                className={isActive(`/user/${userIsAuthenticated.user._id}`)}
-              >
-                My Profile
-              </Link>
-            </li>
-            <li>
-              <span
-                onClick={() => {
-                  signout(() => (window.location = '/'));
-                }}
-                className="signout-link"
-              >
-                Sign Out
-              </span>
-            </li>
-          </>
-        )}
+  <>
+    <li>
+      <Link
+        to={`/user/${userIsAuthenticated.user._id}`} // ✅ use user._id from isAuthenticated()
+        className={isActive(`/user/${userIsAuthenticated.user._id}`)}
+      >
+        My Profile
+      </Link>
+    </li>
+    <li>
+      <span
+        onClick={() => {
+          signout(() => (window.location = '/'));
+        }}
+        className="signout-link"
+      >
+        Sign Out
+      </span>
+    </li>
+  </>
+)}
       </ul>
 
       {/* 👇 Icon carousel nav (visible on mobile) */}
@@ -116,26 +116,26 @@ function Navbar() {
           )}
 
           {userIsAuthenticated && (
-            <>
-              <div className={`emoji-item ${isActive(`/user/${userIsAuthenticated.user._id}`)}`}>
-                <Link to={`/user/${userIsAuthenticated.user._id}`} className="emoji-link">
-                  <PersonIcon fontSize="large" />
-                </Link>
-                <span className="emoji-label">Profile</span>
-              </div>
-              <div className="emoji-item">
-                <span
-                  onClick={() => {
-                    signout(() => (window.location = '/'));
-                  }}
-                  className="emoji-link signout-link"
-                >
-                  <LogoutIcon fontSize="large" />
-                </span>
-                <span className="emoji-label">Sign Out</span>
-              </div>
-            </>
-          )}
+  <>
+    <div className={`emoji-item ${isActive(`/user/${userIsAuthenticated.user._id}`)}`}>
+      <Link to={`/user/${userIsAuthenticated.user._id}`} className="emoji-link">
+        <PersonIcon fontSize="large" />
+      </Link>
+      <span className="emoji-label">Profile</span>
+    </div>
+    <div className="emoji-item">
+      <span
+        onClick={() => {
+          signout(() => (window.location = '/'));
+        }}
+        className="emoji-link signout-link"
+      >
+        <LogoutIcon fontSize="large" />
+      </span>
+      <span className="emoji-label">Sign Out</span>
+    </div>
+  </>
+)}
         </div>
       </div>
     </nav>

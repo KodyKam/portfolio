@@ -1,8 +1,8 @@
 // client/src/user/api-user.js
 
-const BASE_URL =
-  process.env.REACT_APP_API_URL || process.env.VITE_BACKEND_URL || "http://localhost:5000/api";
-  // const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000/api";
+// const BASE_URL =
+  // process.env.REACT_APP_API_URL || process.env.VITE_BACKEND_URL || "http://localhost:5000/api";
+  const BASE_URL = "http://localhost:5000/api";
 
 const handleResponse = async (response) => {
   if (!response.ok) {
@@ -18,8 +18,9 @@ const handleResponse = async (response) => {
 };
 
 const handleError = (err) => {
+  if (err.name === "AbortError") return;
   console.error("API call failed:", err);
-  throw err;
+  return { error: "Network or server error" };
 };
 
 const create = async (user) => {
@@ -51,14 +52,15 @@ const list = async (signal) => {
   }
 };
 
-const read = async ({ userId }, { t }, signal) => {
+// client/src/user/api-user.js
+const read = async ({ userId }, token, signal) => {
   try {
     const response = await fetch(`${BASE_URL}/users/${userId}`, {
       method: "GET",
       signal,
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${t}`,
+        Authorization: `Bearer ${token}`, // ✅ now matches param name
       },
     });
     return await handleResponse(response);
