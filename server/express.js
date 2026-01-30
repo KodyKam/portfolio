@@ -60,6 +60,8 @@ app.use("/api/qualifications", educationRoutes);
 app.use("/api/auth", authRoutes);          // ✅ Mount auth routes
 app.use("/api/workspaces", workspaceRoutes);
 
+console.log("Auth routes loaded:", authRoutes);
+
 // ------------------------
 // Default route
 // ------------------------
