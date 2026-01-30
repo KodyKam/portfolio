@@ -81,4 +81,13 @@ app.use((err, req, res, next) => {
   }
 });
 
+app._router.stack.forEach((layer) => {
+  if (layer.route) {
+    console.log(
+      Object.keys(layer.route.methods).join(",").toUpperCase(),
+      layer.route.path
+    );
+  }
+});
+
 export default app;
