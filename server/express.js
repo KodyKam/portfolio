@@ -21,10 +21,8 @@ const app = express();
 // ------------------------
 // CORS setup
 // ------------------------
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://kodykam.netlify.app"
-];
+
+const allowedOrigins = ["http://localhost:3000", "https://kodykam.netlify.app"];
 
 app.use(cors({
   origin: (origin, callback) => {
@@ -68,6 +66,9 @@ console.log("Auth routes loaded:", authRoutes);
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to My Portfolio application." });
 });
+
+// temporary test post route
+app.post("/api/test", (req, res) => res.json({ ok: true }));
 
 // ------------------------
 // Error handling
