@@ -7,4 +7,6 @@ if (!API_BASE) {
   );
 }
 
+console.log("API_BASE:", API_BASE);
+
 export default API_BASE;
