@@ -10,6 +10,14 @@
   color: #1c1c1c; /* make sure text is dark */
 }
 
+.home-actions {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 .intro-text {
   font-size: 1.2rem;
   margin-top: 1rem;
