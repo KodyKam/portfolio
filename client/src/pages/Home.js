@@ -8,14 +8,80 @@ function Home() {
 
   return (
     <div className="home-container">
-      <h1>Welcome!</h1>
+      <div className="local-business-banner">
+  <h2>Serving Scarborough Businesses</h2>
+
+  <p>
+    Looking to upgrade your website or add online booking?
+    Work directly with the developer building your site —
+    no templates, no outsourcing.
+  </p>
+
+  <Button
+    variant="contained"
+    sx={{
+      backgroundColor: '#111',
+      color: '#fff',
+      '&:hover': { backgroundColor: '#38bdf8' },
+      borderRadius: 2,
+      px: 3,
+      py: 1.5,
+      fontWeight: 'bold',
+      mt: 2,
+    }}
+    onClick={() => navigate('/contact')}
+  >
+    Start a Project
+  </Button>
+</div>
+
+<div className="credibility-strip">
+  <div>✔ Direct Communication</div>
+  <div>✔ Custom-Built Websites</div>
+  <div>✔ No Templates or Outsourcing</div>
+</div>
+      <h1>Modern Web Development for Growing Businesses</h1>
       <p className="intro-text">
-        Hi! I'm <strong>Kamara Alleyne</strong>, a Software Engineering Technician passionate about building modern, user-friendly web apps.
-      </p>
+        Hi, I'm Kamara Alleyne — an independent software engineer specializing 
+        in modern, user-friendly web applications for <strong>businesses</strong> and <strong> organizations</strong>.
+        </p>
       <p className="mission">
         <strong>Mission Statement:</strong> To use creativity, leadership, and teamwork to develop impactful software solutions that make a difference.
       </p>
 
+      <div className="process-section">
+  <h2>What Happens Next</h2>
+
+  <div className="process-steps">
+    <div className="step">
+      <h3>1. Tell Me About Your Project</h3>
+      <p>
+        Share a few details about your business and what you want your
+        website to achieve.
+      </p>
+    </div>
+
+    <div className="step">
+      <h3>2. We Discuss the Best Approach</h3>
+      <p>
+        You'll receive clear recommendations tailored to your goals —
+        no technical jargon.
+      </p>
+    </div>
+
+    <div className="step">
+      <h3>3. Build & Launch</h3>
+      <p>
+        Your website is designed, developed, and launched with direct
+        communication throughout the process.
+      </p>
+    </div>
+  </div>
+</div>
+
+      <p className="cta-helper">
+  No pressure. Just a quick conversation about your goals.
+      </p>
       {/* ✅ Button group */}
       <Stack
         direction={{ xs: 'column', sm: 'row' }}
@@ -27,9 +93,9 @@ function Home() {
         <Button
           variant="contained"
           sx={{
-            backgroundColor: '#38bdf8',
+            backgroundColor: '#111',
             color: '#fff',
-            '&:hover': { backgroundColor: '#0ea5e9' },
+            '&:hover': { backgroundColor: '#38bdf8' },
             borderRadius: 2,
             px: 3,
             py: 1.5,
@@ -43,9 +109,9 @@ function Home() {
         <Button
           variant="contained"
           sx={{
-            backgroundColor: '#38bdf8',
+            backgroundColor: '#111',
             color: '#fff',
-            '&:hover': { backgroundColor: '#0ea5e9' },
+            '&:hover': { backgroundColor: '#38bdf8' },
             borderRadius: 2,
             px: 3,
             py: 1.5,

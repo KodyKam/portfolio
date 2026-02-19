@@ -19,26 +19,29 @@ function About() {
         <div className="about-text">
           <h2>Kamara Alleyne</h2>
           <p>
-            Hi, I’m Kamara! I build web applications and tools that are reliable,
-            user-friendly, and tailored to real needs.
+            I’m an independent software engineer focused on building modern,
+            reliable websites and web applications for businesses and organizations.
+            My goal is simple: create digital experiences that are clean, intuitive,
+            and built to support real-world growth.
           </p>
 
           <p>
-            My love for technology started as a teenager, experimenting with code just for fun.
-            That curiosity turned into hands-on experience designing and building interactive
-            websites and apps.
+            My interest in technology began early through curiosity and experimentation,
+            which evolved into hands-on experience designing and developing interactive
+            web solutions. Today, I combine technical skill with practical problem-solving
+            to help clients improve how they present and operate online.
           </p>
 
           <p>
-            I recently completed the <strong>Software Engineering Technician</strong> program
-            at <strong>Centennial College</strong>, where I honed my full stack development
-            skills and learned how to turn ideas into polished, functional projects.
+            I studied Software Engineering at <strong>Centennial College</strong>,
+            where I developed strong full-stack development foundations and learned
+            how to transform ideas into polished, production-ready applications.
           </p>
 
           <p>
-            I enjoy collaborating with clients to bring their visions to life — whether
-            it’s a responsive website, a web tool, or an interactive interface — and I
-            aim to make each project clear, accessible, and easy to use.
+            I work directly with clients throughout the entire process — from planning
+            and design to development and launch — ensuring clear communication,
+            thoughtful decisions, and solutions tailored to each project’s goals.
           </p>
           {/* CTA Button */}
           <div style={{ marginTop: '2rem', textAlign: 'center' }}>
@@ -52,7 +55,7 @@ function About() {
       }}
       aria-label="Contact Kamara"
     >
-      📬 Contact Me to Start Your Project
+      Start Your Project
     </Button>
   </Link>
 </div>
