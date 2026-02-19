@@ -133,3 +133,38 @@
   font-size: 0.95rem;
   color: #6b7280;
 }
+
+.who-i-work-with {
+  max-width: 900px;
+  margin: 60px auto 40px auto;
+  text-align: center;
+}
+
+.who-i-work-with h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #111827;
+}
+
+.who-i-work-with p {
+  font-size: 1rem;
+  color: #4b5563;
+  margin-bottom: 30px;
+}
+
+.client-types {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.client-type {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 500;
+  color: #111827;
+  min-width: 140px;
+}

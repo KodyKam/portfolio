@@ -82,6 +82,21 @@ function Home() {
       <p className="cta-helper">
   No pressure. Just a quick conversation about your goals.
       </p>
+
+      <div className="who-i-work-with">
+  <h2>Who I Work With</h2>
+  <p>
+    I specialize in building modern, reliable websites for small to medium local businesses in Scarborough and surrounding areas. My clients typically include:
+  </p>
+
+  <div className="client-types">
+    <div className="client-type">Contractors & Trades</div>
+    <div className="client-type">Restaurants & Cafés</div>
+    <div className="client-type">Professional Services</div>
+    <div className="client-type">Local Retail & Shops</div>
+    <div className="client-type">Health & Wellness</div>
+  </div>
+</div>
       {/* ✅ Button group */}
       <Stack
         direction={{ xs: 'column', sm: 'row' }}
