@@ -44,6 +44,12 @@ function Navbar() {
           </Link>
           <span className="emoji-label">Projects</span>
         </div>
+        <div className={`emoji-item ${isActive("/client-work")}`}>
+  <Link to="/client-work" className="emoji-link">
+    <BuildIcon fontSize="large" />
+  </Link>
+  <span className="emoji-label">Clients</span>
+</div>
         <div className={`emoji-item ${isActive("/services")}`}>
           <Link to="/services" className="emoji-link">
             <IntegrationInstructionsIcon fontSize="large" />
@@ -65,6 +71,7 @@ function Navbar() {
     <li><Link to="/" className={isActive("/")}>Home</Link></li>
     <li><Link to="/about" className={isActive("/about")}>About</Link></li>
     <li><Link to="/projects" className={isActive("/projects")}>Projects</Link></li>
+    <li><Link to="/client-work" className={isActive("/client-work")}>Client Work</Link></li>
     <li><Link to="/services" className={isActive("/services")}>Services</Link></li>
     <li><Link to="/contact" className={isActive("/contact")}>Start a Project</Link></li>
   </ul>

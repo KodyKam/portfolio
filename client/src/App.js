@@ -11,7 +11,7 @@ import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
-import Resume from "./pages/Resume";
+import ClientWork from "./pages/ClientWork";
 
 // Admin / internal (no auth for now)
 import AdminContacts from "./pages/AdminContacts";
@@ -26,9 +26,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/client-work" element={<ClientWork />} /> {/* new client work page */}
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/resume" element={<Resume />} />
 
         {/* Internal / admin */}
         <Route path="/admin/contacts" element={<AdminContacts />} />

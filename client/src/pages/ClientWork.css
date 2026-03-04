@@ -1,0 +1,79 @@
+/* ClientWork.css */
+
+/* Keep consistent with Projects layout */
+.client-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 2rem;
+}
+
+/* Card styling matches project-card & service-item */
+.client-card {
+  background: #ffffff;
+  color: #1c1c1c;
+  transition: transform 0.3s ease;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.client-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Image styling matches others */
+.client-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Title */
+.client-card h2 {
+  margin-top: 1rem;
+  color: #333;
+}
+
+/* Subtitle under page title */
+.clientwork-intro {
+  margin-top: 0.5rem;
+  opacity: 0.8;
+}
+
+/* Tech stack badges (clean + subtle) */
+.tech-stack {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.tech-stack span {
+  background: #f0f2f5;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+
+/* View button */
+.visit-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  color: #3498db;
+}
+
+.visit-btn:hover {
+  text-decoration: underline;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .client-grid {
+    grid-template-columns: 1fr;
+  }
+}
