@@ -8,6 +8,16 @@ function Projects() {
       <p>Here are a few projects I'm pleased to share:</p>
       <div className="project-grid">
         <div className="project-card">
+          <a href="https://getstandly.app/" target="_blank" rel="noopener noreferrer">
+            <img src="/images/project4.png" alt="Standly" />
+          </a>
+          <h3>Standly</h3>
+          <p>Standly simplifies stand-ups with structured updates 
+            (yesterday, today, blockers), session tracking, and 
+            exportable reports. Built with Firebase, Stripe, and Resend.
+          </p>
+        </div>
+        <div className="project-card">
           <a href="https://kodykam.github.io/fishing/" target="_blank" rel="noopener noreferrer">
             <img src="/images/project1.png" alt="Fishing Friends" />
           </a>
