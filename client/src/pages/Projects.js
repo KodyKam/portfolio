@@ -18,6 +18,17 @@ function Projects() {
           </p>
         </div>
         <div className="project-card">
+          <a href="https://tithr.ca/" target="_blank" rel="noopener noreferrer">
+            <img src="/images/project5.png" alt="Tithr" />
+          </a>
+          <h3>Tithr</h3>
+          <p>
+            Tithr is a church collection management platform that simplifies recording
+            and reporting offerings. It supports multi-tenant accounts, automated PDF
+            reports, and subscription billing. Built with Next.js, Supabase, Stripe, and Resend.
+          </p>
+        </div>
+        <div className="project-card">
           <a href="https://kodykam.github.io/fishing/" target="_blank" rel="noopener noreferrer">
             <img src="/images/project1.png" alt="Fishing Friends" />
           </a>
