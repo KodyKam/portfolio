@@ -1,12 +1,25 @@
 /* client/src/pages/Projects.js */
 import './Projects.css';
-
 function Projects() {
   return (
     <div className="page-container">
       <h1>My Projects</h1>
       <p>Here are a few projects I'm pleased to share:</p>
       <div className="project-grid">
+
+        <div className="project-card">
+          <a href="https://salespacer.ca/" target="_blank" rel="noopener noreferrer">
+            <img src="/images/project6.png" alt="SalesPacer" />
+          </a>
+          <h3>SalesPacer</h3>
+          <p>
+            SalesPacer is a daily sales tracker for commission-based salespeople. 
+            It calculates dynamic daily targets based on income goals, commission 
+            rate, and tax rate — adjusting automatically as the season progresses. 
+            Built with React, Node.js, MongoDB, Stripe, and Resend.
+          </p>
+        </div>
+
         <div className="project-card">
           <a href="https://getstandly.app/" target="_blank" rel="noopener noreferrer">
             <img src="/images/project4.png" alt="Standly" />
@@ -17,6 +30,7 @@ function Projects() {
             exportable reports. Built with Firebase, Stripe, and Resend.
           </p>
         </div>
+
         <div className="project-card">
           <a href="https://tithr.ca/" target="_blank" rel="noopener noreferrer">
             <img src="/images/project5.png" alt="Tithr" />
@@ -28,6 +42,7 @@ function Projects() {
             reports, and subscription billing. Built with Next.js, Supabase, Stripe, and Resend.
           </p>
         </div>
+
         <div className="project-card">
           <a href="https://kodykam.github.io/fishing/" target="_blank" rel="noopener noreferrer">
             <img src="/images/project1.png" alt="Fishing Friends" />
@@ -35,6 +50,7 @@ function Projects() {
           <h3>Fishing Friends</h3>
           <p>A responsive site used to plan fishing trips with my friends, designed using HTML and Bootstrap.</p>
         </div>
+
         <div className="project-card">
           <a href="https://kodykam.github.io/Type-Deck-II/" target="_blank" rel="noopener noreferrer">
             <img src="/images/project2.png" alt="Type Deck II" />
@@ -42,6 +58,7 @@ function Projects() {
           <h3>Type Deck II</h3>
           <p>A competitive 2-player game designed with HTML, CSS and JavaScript.</p>
         </div>
+
         <div className="project-card">
           <a href="https://kodykam.github.io/90dayFixed/" target="_blank" rel="noopener noreferrer">
             <img src="/images/project3.png" alt="90 Day Guess" />
@@ -49,9 +66,9 @@ function Projects() {
           <h3>90 Day Guess</h3>
           <p>A simple mini web app I built to streamline the shipping process at my last job.</p>
         </div>
+
       </div>
     </div>
   );
 }
-
 export default Projects;
