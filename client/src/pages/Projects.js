@@ -1,74 +1,63 @@
 /* client/src/pages/Projects.js */
 import './Projects.css';
+
+const PROJECTS = [
+  { title: 'SalesPacer', img: '/images/project6.png', href: 'https://salespacer.ca/',
+    fit: 'contain',
+    desc: 'A daily sales tracker for commission-based salespeople. Calculates dynamic daily targets from income goals, commission rate, and tax rate — adjusting as the season progresses.',
+    tech: ['React', 'Node.js', 'MongoDB', 'Stripe'] },
+  { title: 'Standly', img: '/images/project4.png', href: 'https://getstandly.app/',
+    fit: 'contain',
+    desc: 'Simplifies stand-ups with structured updates (yesterday, today, blockers), session tracking, and exportable reports.',
+    tech: ['Firebase', 'Stripe', 'Resend'] },
+  { title: 'Tithr', img: '/images/project5.png', href: 'https://tithr.ca/',
+    fit: 'contain',
+    desc: 'A church collection management platform with multi-tenant accounts, automated PDF reports, and subscription billing.',
+    tech: ['Next.js', 'Supabase', 'Stripe'] },
+  { title: 'Fishing Friends', img: '/images/project1.png', href: 'https://kodykam.github.io/fishing/',
+    fit: 'contain',
+    desc: 'A responsive site for planning fishing trips with friends.',
+    tech: ['HTML', 'Bootstrap'] },
+  { title: 'Type Deck II', img: '/images/project2.png', href: 'https://kodykam.github.io/Type-Deck-II/',
+    fit: 'contain',
+    desc: 'A competitive 2-player typing game.',
+    tech: ['HTML', 'CSS', 'JavaScript'] },
+  { title: '90 Day Guess', img: '/images/project3.png', href: 'https://kodykam.github.io/90dayFixed/',
+    fit: 'contain',
+    desc: 'A mini web app built to streamline the shipping process at a previous job.',
+    tech: ['JavaScript'] },
+];
+
 function Projects() {
   return (
-    <div className="page-container">
-      <h1>My Projects</h1>
-      <p>Here are a few projects I'm pleased to share:</p>
-      <div className="project-grid">
-
-        <div className="project-card">
-          <a href="https://salespacer.ca/" target="_blank" rel="noopener noreferrer">
-            <img src="/images/project6.png" alt="SalesPacer" />
-          </a>
-          <h3>SalesPacer</h3>
-          <p>
-            SalesPacer is a daily sales tracker for commission-based salespeople. 
-            It calculates dynamic daily targets based on income goals, commission 
-            rate, and tax rate — adjusting automatically as the season progresses. 
-            Built with React, Node.js, MongoDB, Stripe, and Resend.
-          </p>
+    <section className="section">
+      <div className="container">
+        <div className="page-head">
+          <p className="eyebrow">Selected work</p>
+          <h1>Projects</h1>
+          <p className="lead">A few things I've built and shipped.</p>
         </div>
 
-        <div className="project-card">
-          <a href="https://getstandly.app/" target="_blank" rel="noopener noreferrer">
-            <img src="/images/project4.png" alt="Standly" />
-          </a>
-          <h3>Standly</h3>
-          <p>Standly simplifies stand-ups with structured updates 
-            (yesterday, today, blockers), session tracking, and 
-            exportable reports. Built with Firebase, Stripe, and Resend.
-          </p>
+        <div className="grid-cards">
+          {PROJECTS.map((p) => (
+            <article className="card" key={p.title}>
+              <a className={`card-media ${p.fit === 'contain' ? 'card-media--contain' : ''}`}
+                 href={p.href} target="_blank" rel="noopener noreferrer" aria-label={p.title}>
+                 <img src={p.img} alt={p.title} />
+              </a>
+              <div className="card-body">
+                <h3>{p.title}</h3>
+                <p>{p.desc}</p>
+                <div className="tag-row">
+                  {p.tech.map((t) => <span className="tag" key={t}>{t}</span>)}
+                </div>
+              </div>
+            </article>
+          ))}
         </div>
-
-        <div className="project-card">
-          <a href="https://tithr.ca/" target="_blank" rel="noopener noreferrer">
-            <img src="/images/project5.png" alt="Tithr" />
-          </a>
-          <h3>Tithr</h3>
-          <p>
-            Tithr is a church collection management platform that simplifies recording
-            and reporting offerings. It supports multi-tenant accounts, automated PDF
-            reports, and subscription billing. Built with Next.js, Supabase, Stripe, and Resend.
-          </p>
-        </div>
-
-        <div className="project-card">
-          <a href="https://kodykam.github.io/fishing/" target="_blank" rel="noopener noreferrer">
-            <img src="/images/project1.png" alt="Fishing Friends" />
-          </a>
-          <h3>Fishing Friends</h3>
-          <p>A responsive site used to plan fishing trips with my friends, designed using HTML and Bootstrap.</p>
-        </div>
-
-        <div className="project-card">
-          <a href="https://kodykam.github.io/Type-Deck-II/" target="_blank" rel="noopener noreferrer">
-            <img src="/images/project2.png" alt="Type Deck II" />
-          </a>
-          <h3>Type Deck II</h3>
-          <p>A competitive 2-player game designed with HTML, CSS and JavaScript.</p>
-        </div>
-
-        <div className="project-card">
-          <a href="https://kodykam.github.io/90dayFixed/" target="_blank" rel="noopener noreferrer">
-            <img src="/images/project3.png" alt="90 Day Guess" />
-          </a>
-          <h3>90 Day Guess</h3>
-          <p>A simple mini web app I built to streamline the shipping process at my last job.</p>
-        </div>
-
       </div>
-    </div>
+    </section>
   );
 }
+
 export default Projects;

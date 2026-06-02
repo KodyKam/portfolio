@@ -1,0 +1,14 @@
+/* Resume.css — uses tokens from styles/theme.css */
+.resume-frame {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.resume-frame iframe {
+  display: block;
+  width: 100%;
+  height: 80vh;
+  border: 0;
+}

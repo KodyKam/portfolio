@@ -1,28 +1,38 @@
-/* Services.js */
+/* client/src/pages/Services.js */
 import './Services.css';
+
+const SERVICES = [
+  { img: '/images/service1.png', title: 'Web Development', fit: 'contain', desc: 'Responsive, modern websites built with React, HTML, and CSS.' },
+  { img: '/images/service2.png', title: 'Mobile-First UI', fit: 'contain', desc: 'Mockups and prototype apps designed mobile-first.' },
+  { img: '/images/service3.png', title: 'Database Integration', fit: 'contain', desc: 'SQL/NoSQL database setup and backend integration.' },
+];
 
 function Services() {
   return (
-    <div className="page-container">
-      <h1>Services I Offer</h1>
-      <div className="services-list">
-        <div className="service-item">
-          <img src="/images/service1.png" alt="Web Development" />
-          <h3>Web Development</h3>
-          <p>Responsive websites using React, HTML, and CSS.</p>
+    <section className="section">
+      <div className="container">
+        <div className="page-head">
+          <p className="eyebrow">What I do</p>
+          <h1>Services</h1>
+          <p className="lead">End-to-end help getting your business online and working well.</p>
         </div>
-        <div className="service-item">
-          <img src="/images/service2.png" alt="Basic Mobile UI" />
-          <h3>Basic Mobile UI</h3>
-          <p>Mockups and prototype apps using mobile-first design.</p>
-        </div>
-        <div className="service-item">
-          <img src="/images/service3.png" alt="Database Integration" />
-          <h3>Database Integration</h3>
-          <p>SQL/NoSQL database setup and backend integration.</p>
+
+        <div className="grid-cards">
+          {SERVICES.map((s) => (
+            <article className="card" key={s.title}>
+              <a className={`card-media ${s.fit === 'contain' ? 'card-media--contain' : ''}`}
+                 href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.title}>
+                <img src={s.img} alt={s.title} />
+              </a>
+              <div className="card-body">
+                <h3>{s.title}</h3>
+                <p>{s.desc}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

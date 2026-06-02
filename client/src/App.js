@@ -1,5 +1,4 @@
 // client/src/App.js
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
@@ -19,25 +18,26 @@ import AdminContacts from "./pages/AdminContacts";
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
+      <div className="app-shell">
+        <Navbar />
 
-      <Routes>
-        {/* Public marketing pages */}
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/client-work" element={<ClientWork />} /> {/* new client work page */}
-        <Route path="/services" element={<Services />} />
-        <Route path="/contact" element={<Contact />} />
+        <main className="app-main">
+          <Routes>
+            {/* Public marketing pages */}
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/client-work" element={<ClientWork />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/contact" element={<Contact />} />
 
-        {/* Internal / admin */}
-        <Route path="/admin/contacts" element={<AdminContacts />} />
+            {/* Internal / admin */}
+            <Route path="/admin/contacts" element={<AdminContacts />} />
+          </Routes>
+        </main>
 
-        {/* Fallback (optional, but recommended later) */}
-        {/* <Route path="*" element={<NotFound />} /> */}
-      </Routes>
-
-      <Footer />
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 }

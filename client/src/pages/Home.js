@@ -1,143 +1,97 @@
 // client/src/pages/Home.js
-import { Button, Stack } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import './Home.css';
 
+const STEPS = [
+  { n: '01', title: 'Tell me about your project', body: 'Share a few details about your business and what you want your website to achieve.' },
+  { n: '02', title: 'We discuss the best approach', body: "You'll receive clear recommendations tailored to your goals — no technical jargon." },
+  { n: '03', title: 'Build & launch', body: 'Your site is designed, developed, and launched with direct communication throughout.' },
+];
+
+const CLIENTS = ['Contractors & Trades', 'Restaurants & Cafés', 'Professional Services', 'Local Retail & Shops', 'Health & Wellness'];
+
 function Home() {
-  const navigate = useNavigate();
-
   return (
-    <div className="home-container">
-      <div className="local-business-banner">
-  <h2>Serving Scarborough Businesses</h2>
+    <>
+      {/* ---- HERO ---- */}
+      <section className="hero surface-dark">
+        <div className="container hero-inner">
+          <p className="eyebrow reveal reveal-1">Independent Software Engineer · Scarborough, ON</p>
+          <h1 className="hero-title reveal reveal-2">
+            Modern web development for <span className="hl">growing businesses</span>
+          </h1>
+          <p className="hero-lead reveal reveal-3">
+            I'm Kamara Alleyne — I build modern, user-friendly websites and web apps for
+            businesses and organizations. Work directly with the developer building your
+            site: no templates, no outsourcing.
+          </p>
+          <div className="hero-actions reveal reveal-4">
+            <Link to="/contact" className="btn btn-primary">
+              Start a project <ArrowForwardIcon fontSize="small" />
+            </Link>
+            <Link to="/about" className="btn btn-secondary">More about me</Link>
+          </div>
+          <ul className="hero-cred reveal reveal-4">
+            <li>Direct communication</li>
+            <li>Custom-built websites</li>
+            <li>No templates or outsourcing</li>
+          </ul>
+        </div>
+      </section>
 
-  <p>
-    Looking to upgrade your website or add online booking?
-    Work directly with the developer building your site —
-    no templates, no outsourcing.
-  </p>
+      {/* ---- PROCESS ---- */}
+      <section className="section">
+        <div className="container">
+          <div className="page-head">
+            <p className="eyebrow">How it works</p>
+            <h2>What happens next</h2>
+          </div>
+          <div className="process-steps">
+            {STEPS.map((s) => (
+              <div className="step" key={s.n}>
+                <span className="step-num">{s.n}</span>
+                <h3>{s.title}</h3>
+                <p>{s.body}</p>
+              </div>
+            ))}
+          </div>
+          <p className="cta-helper">No pressure — just a quick conversation about your goals.</p>
+        </div>
+      </section>
 
-  <Button
-    variant="contained"
-    sx={{
-      backgroundColor: '#111',
-      color: '#fff',
-      '&:hover': { backgroundColor: '#38bdf8' },
-      borderRadius: 2,
-      px: 3,
-      py: 1.5,
-      fontWeight: 'bold',
-      mt: 2,
-    }}
-    onClick={() => navigate('/contact')}
-  >
-    Start a Project
-  </Button>
-</div>
+      {/* ---- WHO I WORK WITH ---- */}
+      <section className="section--tight who-section">
+        <div className="container">
+          <div className="page-head">
+            <p className="eyebrow">Who I work with</p>
+            <h2>Built for local businesses</h2>
+            <p className="lead">
+              I specialize in reliable, modern websites for small to medium businesses
+              in Scarborough and the surrounding GTA.
+            </p>
+          </div>
+          <div className="client-types">
+            {CLIENTS.map((c) => <span className="client-type" key={c}>{c}</span>)}
+          </div>
+        </div>
+      </section>
 
-<div className="credibility-strip">
-  <div>✔ Direct Communication</div>
-  <div>✔ Custom-Built Websites</div>
-  <div>✔ No Templates or Outsourcing</div>
-</div>
-      <h1>Modern Web Development for Growing Businesses</h1>
-      <p className="intro-text">
-        Hi, I'm Kamara Alleyne — an independent software engineer specializing 
-        in modern, user-friendly web applications for <strong>businesses</strong> and <strong> organizations</strong>.
-        </p>
-      <p className="mission">
-        <strong>Mission Statement:</strong> To use creativity, leadership, and teamwork to develop impactful software solutions that make a difference.
-      </p>
-
-      <div className="process-section">
-  <h2>What Happens Next</h2>
-
-  <div className="process-steps">
-    <div className="step">
-      <h3>1. Tell Me About Your Project</h3>
-      <p>
-        Share a few details about your business and what you want your
-        website to achieve.
-      </p>
-    </div>
-
-    <div className="step">
-      <h3>2. We Discuss the Best Approach</h3>
-      <p>
-        You'll receive clear recommendations tailored to your goals —
-        no technical jargon.
-      </p>
-    </div>
-
-    <div className="step">
-      <h3>3. Build & Launch</h3>
-      <p>
-        Your website is designed, developed, and launched with direct
-        communication throughout the process.
-      </p>
-    </div>
-  </div>
-</div>
-
-      <p className="cta-helper">
-  No pressure. Just a quick conversation about your goals.
-      </p>
-
-      <div className="who-i-work-with">
-  <h2>Who I Work With</h2>
-  <p>
-    I specialize in building modern, reliable websites for small to medium local businesses in Scarborough and surrounding areas. My clients typically include:
-  </p>
-
-  <div className="client-types">
-    <div className="client-type">Contractors & Trades</div>
-    <div className="client-type">Restaurants & Cafés</div>
-    <div className="client-type">Professional Services</div>
-    <div className="client-type">Local Retail & Shops</div>
-    <div className="client-type">Health & Wellness</div>
-  </div>
-</div>
-      {/* ✅ Button group */}
-      <Stack
-        direction={{ xs: 'column', sm: 'row' }}
-        spacing={2}
-        justifyContent="center"
-        alignItems="center"
-        sx={{ mt: 3 }}
-      >
-        <Button
-          variant="contained"
-          sx={{
-            backgroundColor: '#111',
-            color: '#fff',
-            '&:hover': { backgroundColor: '#38bdf8' },
-            borderRadius: 2,
-            px: 3,
-            py: 1.5,
-            fontWeight: 'bold',
-          }}
-          onClick={() => navigate('/contact')}
-        >
-          Start a Project
-        </Button>
-
-        <Button
-          variant="contained"
-          sx={{
-            backgroundColor: '#111',
-            color: '#fff',
-            '&:hover': { backgroundColor: '#38bdf8' },
-            borderRadius: 2,
-            px: 3,
-            py: 1.5,
-            fontWeight: 'bold',
-          }}
-          onClick={() => navigate('/about')}
-        >
-          Here's More About Me
-        </Button>
-      </Stack>
-    </div>
+      {/* ---- CTA BAND ---- */}
+      <section className="cta-band surface-dark">
+        <div className="container cta-inner">
+          <div>
+            <h2>Have a project in mind?</h2>
+            <p className="mission">
+              Using creativity, leadership, and teamwork to build software that makes a difference.
+            </p>
+          </div>
+          <Link to="/contact" className="btn btn-primary">
+            Start a project <ArrowForwardIcon fontSize="small" />
+          </Link>
+        </div>
+      </section>
+    </>
   );
 }
 

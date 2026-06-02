@@ -1,67 +1,53 @@
 /* client/src/pages/About.js */
 import React from 'react';
-import './About.css'; // Optional, for styling
 import { Link } from 'react-router-dom';
-import { Button } from '@mui/material';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import './About.css';
 
 function About() {
   return (
-    <div className="about-container">
-      <h1>About Me</h1>
+    <section className="section">
+      <div className="container about-container">
+        <div className="page-head" style={{ textAlign: 'left', margin: 0 }}>
+          <p className="eyebrow">About</p>
+        </div>
 
-      <div className="about-content">
-        <img
-          src="/images/profile.jpg"
-          alt="Kamara Alleyne"
-          className="profile-pic"
-        />
+        <div className="about-grid">
+          <div className="about-media">
+            <img src="/images/profile.jpg" alt="Kamara Alleyne" className="profile-pic" />
+          </div>
 
-        <div className="about-text">
-          <h2>Kamara Alleyne</h2>
-          <p>
-            I’m an independent software engineer focused on building modern,
-            reliable websites and web applications for businesses and organizations.
-            My goal is simple: create digital experiences that are clean, intuitive,
-            and built to support real-world growth.
-          </p>
-
-          <p>
-            My interest in technology began early through curiosity and experimentation,
-            which evolved into hands-on experience designing and developing interactive
-            web solutions. Today, I combine technical skill with practical problem-solving
-            to help clients improve how they present and operate online.
-          </p>
-
-          <p>
-            I studied Software Engineering at <strong>Centennial College</strong>,
-            where I developed strong full-stack development foundations and learned
-            how to transform ideas into polished, production-ready applications.
-          </p>
-
-          <p>
-            I work directly with clients throughout the entire process — from planning
-            and design to development and launch — ensuring clear communication,
-            thoughtful decisions, and solutions tailored to each project’s goals.
-          </p>
-          {/* CTA Button */}
-          <div style={{ marginTop: '2rem', textAlign: 'center' }}>
-  <Link to="/contact" style={{ textDecoration: 'none' }}>
-    <Button
-      variant="contained"
-      sx={{
-        mt: 2,
-        backgroundColor: '#3498db',
-        '&:hover': { backgroundColor: '#2c80b4' },
-      }}
-      aria-label="Contact Kamara"
-    >
-      Start Your Project
-    </Button>
-  </Link>
-</div>
+          <div className="about-text">
+            <h1>Kamara Alleyne</h1>
+            <p>
+              I'm an independent software engineer focused on building modern, reliable
+              websites and web applications for businesses and organizations. My goal is
+              simple: create digital experiences that are clean, intuitive, and built to
+              support real-world growth.
+            </p>
+            <p>
+              My interest in technology began early through curiosity and experimentation,
+              which evolved into hands-on experience designing and developing interactive
+              web solutions. Today, I combine technical skill with practical problem-solving
+              to help clients improve how they present and operate online.
+            </p>
+            <p>
+              I studied Software Engineering at <strong>Centennial College</strong>, where I
+              built strong full-stack foundations and learned how to turn ideas into polished,
+              production-ready applications.
+            </p>
+            <p>
+              I work directly with clients through the entire process — from planning and
+              design to development and launch — ensuring clear communication and solutions
+              tailored to each project's goals.
+            </p>
+            <Link to="/contact" className="btn btn-primary about-cta">
+              Start your project <ArrowForwardIcon fontSize="small" />
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

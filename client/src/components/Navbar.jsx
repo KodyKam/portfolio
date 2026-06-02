@@ -9,73 +9,53 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CodeIcon from "@mui/icons-material/Code";
 import BuildIcon from "@mui/icons-material/Build";
 import IntegrationInstructionsIcon from "@mui/icons-material/IntegrationInstructions";
+import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
+
+const NAV_ITEMS = [
+  { to: "/", label: "Home", short: "Home", Icon: CottageIcon },
+  { to: "/about", label: "About", short: "About", Icon: AccountCircleIcon },
+  { to: "/projects", label: "Projects", short: "Projects", Icon: CodeIcon },
+  { to: "/client-work", label: "Client Work", short: "Clients", Icon: BuildIcon },
+  { to: "/services", label: "Services", short: "Services", Icon: IntegrationInstructionsIcon },
+  { to: "/contact", label: "Start a Project", short: "Hire Me", Icon: RocketLaunchIcon },
+];
 
 function Navbar() {
   const location = useLocation();
-
-  const isActive = (path) =>
-    location.pathname === path ? "active-link" : "";
+  const isActive = (path) => (location.pathname === path ? "active-link" : "");
 
   return (
     <nav className="navbar">
-  <div className="mobile-container">
-    <Link to="/" className="logo-link">
-      <div className="logo-text">KA</div>
-    </Link>
+      <div className="navbar-inner">
+        <Link to="/" className="logo-link" aria-label="Home">
+          <span className="logo-mark">KA</span>
+          <span className="logo-word">Kamara Alleyne</span>
+        </Link>
 
-    {/* Mobile icon carousel */}
-    <div className="emoji-carousel mobile-only">
-      <div className="emoji-track">
-        <div className={`emoji-item ${isActive("/")}`}>
-          <Link to="/" className="emoji-link">
-            <CottageIcon fontSize="large" />
-          </Link>
-          <span className="emoji-label">Home</span>
-        </div>
-        <div className={`emoji-item ${isActive("/about")}`}>
-          <Link to="/about" className="emoji-link">
-            <AccountCircleIcon fontSize="large" />
-          </Link>
-          <span className="emoji-label">About</span>
-        </div>
-        <div className={`emoji-item ${isActive("/projects")}`}>
-          <Link to="/projects" className="emoji-link">
-            <CodeIcon fontSize="large" />
-          </Link>
-          <span className="emoji-label">Projects</span>
-        </div>
-        <div className={`emoji-item ${isActive("/client-work")}`}>
-  <Link to="/client-work" className="emoji-link">
-    <BuildIcon fontSize="large" />
-  </Link>
-  <span className="emoji-label">Clients</span>
-</div>
-        <div className={`emoji-item ${isActive("/services")}`}>
-          <Link to="/services" className="emoji-link">
-            <IntegrationInstructionsIcon fontSize="large" />
-          </Link>
-          <span className="emoji-label">Services</span>
-        </div>
-        <div className={`emoji-item ${isActive("/contact")}`}>
-          <Link to="/contact" className="emoji-link">
-            <BuildIcon fontSize="large" />
-          </Link>
-          <span className="emoji-label">Hire Me</span>
+        {/* Desktop nav */}
+        <ul className="nav-links desktop-only">
+          {NAV_ITEMS.map(({ to, label }) => (
+            <li key={to}>
+              <Link to={to} className={isActive(to)}>{label}</Link>
+            </li>
+          ))}
+        </ul>
+
+        {/* Mobile icon rail */}
+        <div className="emoji-carousel mobile-only">
+          <div className="emoji-track">
+            {NAV_ITEMS.map(({ to, short, Icon }) => (
+              <div className={`emoji-item ${isActive(to)}`} key={to}>
+                <Link to={to} className="emoji-link" aria-label={short}>
+                  <Icon fontSize="medium" />
+                </Link>
+                <span className="emoji-label">{short}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-
-  {/* Desktop nav */}
-  <ul className="nav-links desktop-only">
-    <li><Link to="/" className={isActive("/")}>Home</Link></li>
-    <li><Link to="/about" className={isActive("/about")}>About</Link></li>
-    <li><Link to="/projects" className={isActive("/projects")}>Projects</Link></li>
-    <li><Link to="/client-work" className={isActive("/client-work")}>Client Work</Link></li>
-    <li><Link to="/services" className={isActive("/services")}>Services</Link></li>
-    <li><Link to="/contact" className={isActive("/contact")}>Start a Project</Link></li>
-  </ul>
-</nav>
+    </nav>
   );
 }
 

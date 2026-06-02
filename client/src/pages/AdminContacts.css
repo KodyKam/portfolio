@@ -1,0 +1,16 @@
+/* AdminContacts.css — uses tokens from styles/theme.css */
+.table-scroll { overflow-x: auto; }
+.admin-error { color: var(--danger); }
+.btn-danger {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: .85rem;
+  color: var(--white);
+  background: var(--danger);
+  border: none;
+  padding: .45rem .9rem;
+  border-radius: var(--r-xs);
+  cursor: pointer;
+  transition: filter var(--t-fast) var(--ease);
+}
+.btn-danger:hover { filter: brightness(.92); }
