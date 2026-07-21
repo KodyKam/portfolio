@@ -2,6 +2,10 @@
 import './Projects.css';
 
 const PROJECTS = [
+  { title: 'Taskidee', img: '/images/project7.png', href: 'https://taskidee.app/',
+    fit: 'contain',
+    desc: 'A family task management app that helps parents build daily routines for their kids — with per-child dashboards, customizable task lists, and shareable child links.',
+    tech: ['Node.js', 'MongoDB', 'Stripe', 'Resend'] },
   { title: 'SalesPacer', img: '/images/project6.png', href: 'https://salespacer.ca/',
     fit: 'contain',
     desc: 'A daily sales tracker for commission-based salespeople. Calculates dynamic daily targets from income goals, commission rate, and tax rate — adjusting as the season progresses.',
